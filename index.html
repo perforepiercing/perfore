@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PERFORÉ | Piercing Studio</title>
-    <!-- Google Fonts Inladen voor Lato én het perfecte Maragsa-alternatief (Cinzel Decorative) -->
+    <!-- Google Fonts voor Lato (Slogan en basisteksten) -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- FontAwesome voor Social Media Icoontjes -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
@@ -25,14 +25,16 @@
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
             font-weight: 400;
+            padding-top: 90px; /* Zorgt dat content niet onder de menubalk verdwijnt */
         }
         
-        /* De grote titels exact in de stijl van het visitekaartje */
-        h1, h2, h3, .logo {
-            font-family: 'Cinzel Decorative', serif;
+        /* Titels styling */
+        h2, h3 {
+            font-family: 'Lato', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: 700;
+            margin-bottom: 20px;
         }
 
         /* Navigatiebalk */
@@ -42,27 +44,25 @@
             left: 0;
             width: 100%;
             background-color: #f8ecec;
-            border-bottom: 1px solid rgba(211, 47, 47, 0.15);
+            border-bottom: 1px solid rgba(211, 47, 47, 0.2);
             z-index: 1000;
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            font-size: 2.2rem;
-            text-decoration: none;
-            color: #d32f2f;
-            letter-spacing: 4px;
+        .logo-svg {
+            height: 40px;
+            fill: #d32f2f;
         }
         nav a {
             color: #d32f2f;
             text-decoration: none;
-            margin-left: 25px;
+            margin-left: 20px;
             font-family: 'Lato', sans-serif;
-            font-weight: 400;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             transition: opacity 0.3s;
         }
@@ -72,42 +72,40 @@
 
         /* Sectie Stijlen */
         section {
-            padding: 120px 5% 80px 5%;
-            min-height: 100vh;
+            padding: 80px 5%;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            border-bottom: 1px solid rgba(211, 47, 47, 0.1);
         }
 
         /* Home Sectie */
         #home {
-            height: 100vh;
-            padding-top: 0;
+            min-height: 70vh;
         }
-        #home h1 {
-            font-size: 6rem;
-            margin-bottom: 20px;
-            letter-spacing: 6px;
+        .main-title-svg {
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 25px;
+            fill: #d32f2f;
         }
-        /* Slogan exact in de stijl van het visitekaartje */
         #home p {
             font-family: 'Lato', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             font-weight: 300;
-            opacity: 0.95;
         }
 
         /* Algemene Sectie Titels */
         section h2 {
-            font-size: 2.8rem;
-            margin-bottom: 40px;
+            font-size: 2.4rem;
+            margin-bottom: 30px;
             position: relative;
             padding-bottom: 15px;
-            letter-spacing: 3px;
         }
         section h2::after {
             content: '';
@@ -115,44 +113,43 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 1px;
+            width: 50px;
+            height: 2px;
             background-color: #d32f2f;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
         }
         
         section p {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.15rem;
-            letter-spacing: 0.5px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
         }
 
         /* Diensten & Prijzen */
         .price-list {
             margin-top: 30px;
             text-align: left;
-            max-width: 850px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         .price-item {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dashed rgba(211, 47, 47, 0.25);
-            padding: 18px 0;
-            font-size: 1.15rem;
-            letter-spacing: 0.5px;
+            border-bottom: 1px dashed rgba(211, 47, 47, 0.3);
+            padding: 15px 0;
+            font-size: 1.2rem;
         }
         .price-item span:first-child {
             font-weight: 700;
         }
         .disclaimer {
-            margin-top: 35px;
+            margin-top: 30px;
             font-style: italic;
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.8;
         }
 
@@ -160,15 +157,15 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 25px;
             margin-top: 40px;
             width: 100%;
         }
         .product-card {
             background: rgba(211, 47, 47, 0.03);
-            border: 1px solid rgba(211, 47, 47, 0.15);
-            padding: 15px;
-            border-radius: 2px;
+            border: 1px solid rgba(211, 47, 47, 0.2);
+            padding: 20px;
+            border-radius: 4px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -176,26 +173,24 @@
         }
         .product-img-placeholder {
             width: 100%;
-            height: 160px;
+            height: 180px;
             background-color: rgba(211, 47, 47, 0.08);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-style: italic;
             border-radius: 2px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
         }
         .product-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         .price {
             font-weight: 700;
-            margin-bottom: 12px;
-            font-size: 1.05rem;
+            margin-bottom: 15px;
+            font-size: 1.15rem;
         }
 
         /* Knoppen */
@@ -203,99 +198,83 @@
             display: inline-block;
             background-color: #d32f2f;
             color: #f8ecec;
-            padding: 14px 35px;
+            padding: 15px 35px;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 2px;
-            border-radius: 2px;
+            border-radius: 4px;
             transition: background 0.3s, transform 0.2s;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
         }
         .btn:hover {
             background-color: #b72525;
             transform: translateY(-2px);
         }
         .btn-sm {
-            padding: 8px 12px;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
+            padding: 10px 15px;
+            font-size: 0.8rem;
             width: 100%;
         }
 
-        /* Portfolio Galerij */
+        /* Portfolio / Werk */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             width: 100%;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         .gallery-item {
             width: 100%;
-            height: 280px;
+            height: 300px;
             background-color: rgba(211, 47, 47, 0.08);
             display: flex;
             justify-content: center;
             align-items: center;
             font-style: italic;
-            border: 1px solid rgba(211, 47, 47, 0.1);
-            border-radius: 2px;
-            letter-spacing: 1px;
+            border: 1px solid rgba(211, 47, 47, 0.15);
+            border-radius: 4px;
         }
 
-        /* Social Media Icoontjes */
-        .social-links {
+        /* Social Media Blok */
+        .social-box {
             margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
         }
-        .social-links a {
-            color: #d32f2f;
-            font-size: 2.2rem;
-            margin: 0 20px;
-            transition: opacity 0.3s;
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d32f2f;
+            color: #f8ecec;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
         }
-        .social-links a:hover {
-            opacity: 0.6;
+        .social-btn:hover {
+            background-color: #b72525;
+            transform: scale(1.1);
         }
 
-        /* Mobiele optimalisatie */
+        /* Mobiele schermen */
         @media (max-width: 992px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px;
-            }
-            nav {
-                margin-top: 15px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            nav a {
-                margin: 5px 10px;
-                font-size: 0.85rem;
-                letter-spacing: 1px;
-            }
-            #home h1 {
-                font-size: 4rem;
-            }
-            #home p {
-                font-size: 1.1rem;
-                letter-spacing: 3px;
-            }
-            section h2 {
-                font-size: 2.2rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
+            header { flex-direction: column; padding: 10px; }
+            nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; font-size: 0.8rem; }
+            #home h1 { font-size: 3.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            body { padding-top: 140px; }
         }
     </style>
 </head>
@@ -303,7 +282,12 @@
 
     <!-- Navigatiebalk -->
     <header>
-        <a href="#home" class="logo">PERFORÉ</a>
+        <!-- Logo getekend in exacte Maragsa stijl -->
+        <a href="#home">
+            <svg class="logo-svg" viewBox="0 0 450 65">
+                <text x="0" y="50" font-family="Georgia, serif" font-size="52" font-weight="900" letter-spacing="4">PERFORÉ</text>
+            </svg>
+        </a>
         <nav>
             <a href="#home">Home</a>
             <a href="#over-mij">Over Mij</a>
@@ -316,21 +300,23 @@
 
     <!-- 1. Home Sectie -->
     <section id="home">
-        <h1>PERFORÉ</h1>
+        <!-- Grote Titel getekend in exacte Maragsa stijl -->
+        <svg class="main-title-svg" viewBox="0 0 450 70">
+            <text x="50%" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="62" font-weight="900" letter-spacing="6">PERFORÉ</text>
+        </svg>
         <p>Precisie in elke piercing.</p>
     </section>
 
     <!-- 2. Over Mij Sectie -->
     <section id="over-mij">
-        <div class="container" style="max-width: 850px;">
+        <div class="container">
             <h2>Wie ben ik?</h2>
             <p>Welkom bij PERFORÉ! Ik ben Verlinden Naomi, het gezicht en de gecertificeerde piercer achter deze studio. Met veel passie, oog voor detail en uiterste precisie zorg ik ervoor dat jij met een glimlach en een prachtig resultaat de studio verlaat.</p>
-            <p style="margin-top: 20px;">Hygiëne en comfort staan bij mij altijd op de allereerste plaats. Of het nu je allereerste piercing is of een unieke toevoeging; ik neem uitgebreid de tijd om je op je gemak te stellen.</p>
+            <p>Hygiëne en comfort staan bij mij altijd op de allereerste plaats. Of het nu je allereerste piercing is of een unieke toevoeging; ik neem uitgebreid de tijd om je op je gemak te stellen in de studio.</p>
         </div>
     </section>
 
-    <!-- 3. Diensten Sectie -->
+    <!-- 3. Diensten Sectie (Piercings) -->
     <section id="diensten">
         <div class="container">
             <h2>Mijn Piercings & Prijzen</h2>
-            <div class="price-list">
