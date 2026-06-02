@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERFORÉ | Piercing Studio</title>
+    <!-- Google Fonts Inladen -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome voor Social Media Icoontjes -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        /* Lettertype Maragsa nabootsen via een chique Serif font */
+        @font-face {
+            font-family: 'Maragsa';
+            src: local('Playfair Display'), local('Georgia'), serif;
+        }
+
+        /* Basis Stijlen en Kleuren */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f8ecec;
+            color: #d32f2f;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, .brand-name {
+            font-family: 'Maragsa', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Navigatiebalk */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8ecec;
+            border-bottom: 1px solid rgba(211, 47, 47, 0.2);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #d32f2f;
+        }
+        nav a {
+            color: #d32f2f;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Sectie Stijlen */
+        section {
+            padding: 100px 5% 60px 5%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Home Sectie */
+        #home {
+            height: 100vh;
+            padding-top: 0;
+        }
+        #home h1 {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        #home p {
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Algemene Sectie Titels */
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #d32f2f;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Diensten & Prijzen */
+        .price-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(211, 47, 47, 0.3);
+            padding: 15px 0;
+            font-size: 1.1rem;
+        }
+        .price-item span:first-child {
+            font-weight: 700;
+        }
+        .disclaimer {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* Juwelen Webshop Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            width: 100%;
+        }
+        .product-card {
+            background: rgba(211, 47, 47, 0.05);
+            border: 1px solid rgba(211, 47, 47, 0.2);
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(211, 47, 47, 0.1);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            border-radius: 2px;
+        }
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .price {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Knoppen */
+        .btn {
+            display: inline-block;
+            background-color: #d32f2f;
+            color: #f8ecec;
+            padding: 12px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            background-color: #b72525;
+            transform: translateY(-2px);
+        }
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Portfolio Galerij */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 250px;
+            background-color: rgba(211, 47, 47, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            border: 1px solid rgba(211, 47, 47, 0.1);
+            border-radius: 2px;
+        }
+
+        /* Social Media Icoontjes */
+        .social-links {
+            margin-top: 30px;
+        }
+        .social-links a {
+            color: #d32f2f;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Mobiele optimalisatie */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            #home p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <header>
+        <a href="#home" class="logo">PERFORÉ</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#over-mij">Over Mij</a>
+            <a href="#diensten">Piercings</a>
+            <a href="#juwelen">Juwelen</a>
+            <a href="#portfolio">Werk</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- 1. Home Sectie -->
+    <section id="home">
+        <h1>PERFORÉ</h1>
+        <p>Precisie in elke piercing.</p>
+    </section>
+
+    <!-- 2. Over Mij Sectie -->
+    <section id="over-mij">
+        <div class="container">
+            <h2>Wie ben ik?</h2>
+            <p>Welkom bij PERFORÉ! Ik ben Verlinden Naomi, het gezicht en de gecertificeerde piercer achter deze studio. Met veel passie, oog voor detail en uiterste precisie zorg ik ervoor dat jij met een glimlach en een prachtig resultaat de studio verlaat.</p>
+            <p style="margin-top: 15px;">Hygiëne en comfort staan bij mij altijd op de allereerste plaats. Of het nu je allereerste piercing is of een unieke toevoeging; ik neem uitgebreid de tijd om je op je gemak te stellen.</p>
+        </div>
+    </section>
+
+    <!-- 3. Diensten Sectie -->
+    <section id="diensten">
+        <div class="container">
+            <h2>Mijn Piercings & Prijzen</h2>
+            <div class="price-list">
+                <div class="price-item"><span>Oorlel (Lobe)</span><span>€25,00</span></div>
+                <div class="price-item"><span>Kraakbeen (Helix / Tragus)</span><span>€40,00</span></div>
+                <div class="price-item"><span>Neuspiercing (Nostril)</span><span>€45,00</span></div>
+                <div class="price-item"><span>Septum</span><span>€50,00</span></div>
+                <div class="price-item"><span>Navelpiercing</span><span>€55,00</span></div>
+                <div class="price-item"><span>Tepelpiercing</span><span>€60,00</span></div>
+            </div>
+            <p class="disclaimer">* Al mijn prijzen zijn inclusief standaard titanium beginjuweel en professionele nazorginstructies.</p>
+        </div>
+    </section>
+
+    <!-- 4. Juwelen Sectie -->
+    <section id="juwelen">
+        <div class="container">
+            <h2>Onze Juwelen</h2>
+            <p>Ontdek hoogwaardige juwelen voor jouw piercings. Bestel eenvoudig online en haal het gratis op in de studio (geen verzending mogelijk).</p>
+            
+            <div class="grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img-placeholder">Foto Juweel 1</div>
+                    <h3>Titanium Clicker Ring</h3>
+                    <div class="price">€25,00</div>
