@@ -14,132 +14,104 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { background-color: #f8ecec; color: #d32f2f; font-family: 'Lato', sans-serif; line-height: 1.6; padding-top: 70px; }
+        h1, h2, h3, h4 { font-family: 'Cinzel Decorative', Georgia, serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
         
-        h1, h2, h3, h4 {
-            font-family: 'Cinzel Decorative', Georgia, serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        /* 1. De compacte bovenbalk exact in de stijl en kleur van de footer */
-        header { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            background-color: #d32f2f; 
-            z-index: 1000; 
-            padding: 15px 5%; 
-            display: flex; 
-            justify-content: center; /* Gecentreerd op grote schermen */
-            align-items: center; 
-        }
+        /* De compacte bovenbalk exact in de stijl en kleur van de footer */
+        header { position: fixed; top: 0; left: 0; width: 100%; background-color: #d32f2f; z-index: 1000; padding: 15px 5%; display: flex; justify-content: center; align-items: center; }
         nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; width: 100%; max-width: 1100px; }
-        nav a { 
-            color: #f8ecec; 
-            text-decoration: none; 
-            margin: 5px 15px; 
-            font-family: 'Lato', sans-serif;
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 0.9rem; 
-            letter-spacing: 2px; 
-            transition: opacity 0.3s; 
-        }
+        nav a { color: #f8ecec; text-decoration: none; margin: 5px 15px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; transition: opacity 0.3s; }
         nav a:hover { opacity: 0.7; }
         
-        /* Gsm-vriendelijke taalknop in de menubalk */
-        .lang-btn { background-color: transparent; border: 1px solid #f8ecec; color: #f8ecec; padding: 4px 10px; margin-left: 15px; font-family: 'Lato', sans-serif; font-weight: 700; cursor: pointer; border-radius: 2px; transition: all 0.3s; font-size: 0.85rem; }
+        .lang-btn { background-color: transparent; border: 1px solid #f8ecec; color: #f8ecec; padding: 4px 10px; margin-left: 15px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.85rem; }
         .lang-btn:hover { background-color: #f8ecec; color: #d32f2f; }
 
         section { padding: 100px 5%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(211, 47, 47, 0.15); }
-        
-        /* 2. De nieuwe Home / Over mij pagina layout */
         #home { padding-top: 120px; }
         .about-container { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; width: 100%; gap: 50px; text-align: left; }
         .about-text { flex: 1; }
-        /* Perforé titel groter gemaakt dan de subkop */
-        .about-text h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: 4px; color: #d32f2f; font-family: 'Cinzel Decorative', Georgia, serif; }
-        .about-text h3 { font-family: 'Lato', sans-serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 1px; color: #d32f2f; text-transform: none; margin-bottom: 25px; }
-        .about-text p { font-size: 1.25rem; margin-bottom: 20px; font-weight: 400; text-align: justify; }
+        .about-text h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: 4px; color: #d32f2f; }
+        .about-text h3 { font-family: 'Lato', sans-serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 1px; text-transform: none; margin-bottom: 25px; }
+        .about-text p { font-size: 1.25rem; margin-bottom: 20px; text-align: justify; }
         .about-image-wrapper { flex: 0 0 380px; }
-        .about-image-placeholder { width: 100%; height: 480px; background-color: rgba(211, 47, 47, 0.05); border: 3px solid #d32f2f; display: flex; justify-content: center; align-items: center; font-style: italic; font-size: 1.1rem; }
+        .about-image-placeholder { width: 100%; height: 480px; background-color: rgba(211, 47, 47, 0.05); border: 3px solid #d32f2f; display: flex; justify-content: center; align-items: center; font-style: italic; }
         .about-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Algemene Sectie Titels */
         section h2 { font-size: 2.5rem; margin-bottom: 40px; position: relative; padding-bottom: 15px; text-align: center; width: 100%; letter-spacing: 3px; }
         section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background-color: #d32f2f; }
         .container { max-width: 1100px; width: 100%; text-align: center; }
-        .section-desc { font-size: 1.3rem; max-width: 850px; margin: 0 auto 30px auto; text-align: center; font-weight: 300; letter-spacing: 0.5px; }
+        .section-desc { font-size: 1.3rem; max-width: 850px; margin: 0 auto 30px auto; font-weight: 300; }
 
-        /* Prijzenlijst */
         .price-list { margin: 30px auto 0 auto; text-align: left; max-width: 700px; }
         .price-item { display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(211, 47, 47, 0.25); padding: 15px 0; font-size: 1.25rem; }
         .price-item span:first-child { font-weight: 700; }
         
-        /* De leeftijdskader */
-        .rules-box { border: 1px solid #d32f2f; padding: 25px; margin-top: 45px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center; background-color: rgba(211, 47, 47, 0.02); }
-        .rules-box p { font-size: 1.15rem; margin-bottom: 10px; font-weight: 400; }
-        .rules-box p:last-child { margin-bottom: 0; }
+        .rules-box { border: 1px solid #d32f2f; padding: 25px; margin-top: 45px; max-width: 700px; margin-left: auto; margin-right: auto; background-color: rgba(211, 47, 47, 0.02); }
+        .rules-box p { font-size: 1.15rem; margin-bottom: 10px; }
 
-        /* 3. Juwelen webshop (Strakke 4-koloms grid) */
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; width: 100%; }
         .product-card { background: rgba(211, 47, 47, 0.02); border: 1px solid rgba(211, 47, 47, 0.15); padding: 15px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
         .product-img-placeholder { width: 100%; height: 160px; background-color: rgba(211, 47, 47, 0.06); margin-bottom: 15px; display: flex; justify-content: center; align-items: center; font-style: italic; }
-        .product-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-family: 'Lato', sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0px; }
+        .product-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-family: 'Lato', sans-serif; font-weight: 700; text-transform: none; }
         .price { font-weight: 700; margin-bottom: 15px; font-size: 1.1rem; }
 
-        /* 5. Gecentreerd kader voor Huisregels */
-        .info-card { max-width: 800px; border: 1px solid #d32f2f; background-color: rgba(211, 47, 47, 0.02); padding: 40px; margin: 30px auto 0 auto; text-align: center; }
-        .info-card p { font-size: 1.25rem; margin-bottom: 30px; font-weight: 400; line-height: 1.6; }
-        .rules-grid { display: flex; flex-direction: column; gap: 25px; text-align: center; }
-        .rule-text { font-size: 1.15rem; font-weight: 400; line-height: 1.6; max-width: 700px; margin: 0 auto; position: relative; padding-top: 15px; border-top: 1px dashed rgba(211, 47, 47, 0.2); }
+        .info-card { max-width: 800px; border: 1px solid #d32f2f; background-color: rgba(211, 47, 47, 0.02); padding: 40px; margin: 30px auto 0 auto; }
+        .info-card p { font-size: 1.25rem; margin-bottom: 30px; font-weight: 700; text-decoration: underline; }
+        .rules-grid { display: flex; flex-direction: column; gap: 25px; }
+        .rule-text { font-size: 1.15rem; border-top: 1px dashed rgba(211, 47, 47, 0.2); padding-top: 15px; }
         .rule-text:first-of-type { border-top: none; padding-top: 0; }
 
-        /* Knoppen & Boeken */
-        .btn { display: inline-block; background-color: #d32f2f; color: #f8ecec; padding: 16px 45px; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; border: none; cursor: pointer; font-size: 1.05rem; font-family: 'Lato', sans-serif; transition: all 0.3s; border-radius: 0px; }
-        .btn:hover { background-color: #b72525; transform: translateY(-1px); }
-        .btn-sm { padding: 10px 15px; font-size: 0.8rem; width: 100%; text-transform: uppercase; }
-
-        /* Opvallende PS styling */
+        .btn { display: inline-block; background-color: #d32f2f; color: #f8ecec; padding: 16px 45px; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; cursor: pointer; font-size: 1.05rem; }
+        .btn-sm { padding: 10px 15px; font-size: 0.8rem; width: 100%; }
         .ps-box { margin-top: 40px; font-size: 1.1rem; font-style: italic; font-weight: 300; background-color: rgba(211, 47, 47, 0.05); padding: 15px 25px; border-left: 3px solid #d32f2f; display: inline-block; text-align: left; max-width: 600px; }
 
-        /* Portfolio & Fotogalerij */
         .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; margin-top: 20px; }
         .gallery-item { width: 100%; height: 260px; background-color: rgba(211, 47, 47, 0.06); display: flex; justify-content: center; align-items: center; font-style: italic; border: 1px solid rgba(211, 47, 47, 0.1); }
 
-        /* Prachtige Volledig Rode Footer */
-        footer { background-color: #d32f2f; color: #f8ecec; padding: 60px 5% 40px 5%; text-align: center; border-top: none; }
-        .footer-container { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 0 auto; gap: 40px; text-align: center; align-items: start; }
-        .footer-column h4 { font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; color: #f8ecec; }
-        .footer-column p { font-size: 1.15rem; font-weight: 300; color: #f8ecec; }
-        .footer-column a { color: #f8ecec; text-decoration: none; font-size: 1.15rem; font-weight: 400; }
+        footer { background-color: #d32f2f; color: #f8ecec; padding: 60px 5% 40px 5%; text-align: center; }
+        .footer-container { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 0 auto; gap: 40px; }
+        .footer-column h4 { font-size: 1.2rem; margin-bottom: 15px; color: #f8ecec; }
+        .footer-column p, .footer-column a { font-size: 1.15rem; color: #f8ecec; text-decoration: none; }
+        .footer-wa-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 400; }
         .footer-socials { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
-        /* 4. Social media logo's met witte bol en rode letters */
-        .footer-social-btn { color: #d32f2f; background-color: #f8ecec; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; transition: transform 0.2s; }
-        .footer-social-btn:hover { transform: scale(1.1); }
-        .footer-quote { max-width: 900px; margin: 50px auto 0 auto; font-size: 1.1rem; font-style: italic; font-weight: 300; line-height: 1.6; border-top: 1px solid rgba(248, 236, 236, 0.2); padding-top: 25px; color: #f8ecec; }
+        .footer-social-btn { color: #d32f2f; background-color: #f8ecec; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; }
+        .footer-quote { max-width: 900px; margin: 50px auto 0 auto; font-size: 1.1rem; font-style: italic; font-weight: 300; border-top: 1px solid rgba(248, 236, 236, 0.2); padding-top: 25px; color: #f8ecec; }
 
         [lang="en"] { display: none; }
 
-        /* 2. Super strakke gsm-optimalisatie voor alle schermen */
-        @media (max-width: 992px) { 
-            .grid, .gallery { grid-template-columns: repeat(2, 1fr); } 
-            .about-container { flex-direction: column; text-align: center; } 
-            .about-text h1, .about-text h3, .about-text p { text-align: center; } 
-            .about-image-wrapper { flex: 0 0 auto; width: 100%; max-width: 320px; margin: 0 auto; } 
-            .footer-container { grid-template-columns: 1fr; gap: 35px; }
-        }
-        @media (max-width: 768px) { 
-            header { padding: 15px 3%; } 
-            nav a { margin: 5px 8px; font-size: 0.8rem; letter-spacing: 1px; } 
-    <!-- 2. DIENSTEN & PRIJZEN SECTIE -->
+        @media (max-width: 992px) { .grid, .gallery { grid-template-columns: repeat(2, 1fr); } .about-container { flex-direction: column; text-align: center; } .about-text h1, .about-text h3, .about-text p { text-align: center; } .about-image-wrapper { width: 100%; max-width: 320px; margin: 0 auto; } .footer-container { grid-template-columns: 1fr; gap: 35px; } }
+        @media (max-width: 768px) { header { padding: 15px 3%; } nav a { margin: 5px 8px; font-size: 0.8rem; } .grid, .gallery { grid-template-columns: 1fr; } body { padding-top: 120px; } #home h1 { font-size: 3.5rem; } section h2 { font-size: 2rem; } .info-card { padding: 25px 15px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="nav-home">Home</a>
+            <a href="#diensten" class="nav-piercings">Diensten & Prijzen</a>
+            <a href="#juwelen" class="nav-jewelry">Shop</a>
+            <a href="#regels" class="nav-rules">Huisregels</a>
+            <a href="#portfolio" class="nav-portfolio">Portfolio</a>
+            <a href="#contact" class="nav-contact">Afspraak</a>
+            <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="about-container">
+            <div class="about-text">
+                <h1>PERFORÉ</h1>
+                <div class="content-nl">
+                    <h3>Laten we beginnen met mezelf voor te stellen</h3>
+                    <p>Ik ben Naomi, het gezicht en de gecertificeerde piercer achter deze studio. Met veel passie, oog voor detail en uiterste precisie zorg ik ervoor dat jij met een glimlach en een prachtig resultaat de studio verlaat.</p>
+                    <p>Hygiëne en comfort staan bij mij altijd op de allereerste plaats. Of het nu je allereerste piercing is of een unieke toevoeging; ik neem uitgebreid de tijd om je op je gemak te stellen in de studio.</p>
+                </div>
+                <div class="content-en" lang="en">
+                    <h3>Let's start by introducing myself</h3>
+                    <p>I am Naomi, the face and certified piercer behind this studio. With a lot of passion, eye for detail, and ultimate precision, I ensure that you leave the studio with a smile and a beautiful result.</p>
+                    <p>Hygiene and comfort are always my number one priority. Whether it is your very first piercing or a unique addition; I take plenty of time to make you feel completely at ease in the studio.</p>
     <section id="diensten">
         <div class="container">
             <h2 class="title-nl">Diensten & Prijzen</h2>
             <h2 class="title-en" lang="en">Services & Prices</h2>
-            
             <div class="price-list">
                 <div class="price-item"><span>Oorlel (Lobe)</span><span>€25,00</span></div>
                 <div class="price-item"><span>Kraakbeen (Helix / Tragus)</span><span>€40,00</span></div>
@@ -148,8 +120,6 @@
                 <div class="price-item"><span>Navelpiercing</span><span>€55,00</span></div>
                 <div class="price-item"><span>Tepelpiercing</span><span>€60,00</span></div>
             </div>
-            
-            <!-- Leeftijdregels strak ingekaderd -->
             <div class="rules-box rules-box-nl">
                 <p>Personen onder 18 jaar dienen schriftelijke toestemming van de ouders mee te brengen.</p>
                 <p>Personen onder 16 jaar moeten een ouder bij zich hebben.</p>
@@ -162,16 +132,12 @@
             </div>
         </div>
     </section>
-
-    <!-- 3. SHOP SECTIE (Met extra nadruk op Premium Titanium) -->
     <section id="juwelen">
         <div class="container">
             <h2 class="title-nl">Shop Online</h2>
             <h2 class="title-en" lang="en">Shop Online</h2>
             <p class="section-desc section-desc-nl">Ontdek hoogwaardige, <strong>premium titanium juwelen</strong> voor jouw piercings. Bestel eenvoudig via WhatsApp en haal het gratis op in de studio (geen verzending).</p>
             <p class="section-desc section-desc-en" lang="en">Discover high-quality, <strong>premium titanium jewelry</strong> for your piercings. Order easily via WhatsApp and pick it up for free at the studio (no shipping).</p>
-            
-            <!-- De 4-koloms shop grid met jouw officiële WhatsApp Business link -->
             <div class="grid">
                 <div class="product-card"><div class="product-img-placeholder">Juweel 1</div><h3>Titanium Clicker</h3><div class="price">€25,00</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
                 <div class="product-card"><div class="product-img-placeholder">Juweel 2</div><h3>Kristal Stud</h3><div class="price">€19,50</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
@@ -184,22 +150,19 @@
             </div>
         </div>
     </section>
-    <!-- 4. HUISREGELS SECTIE (Professioneel ingekaderd) -->
+    <!-- 4. HUISREGELS SECTIE -->
     <section id="regels">
         <div class="container">
             <h2 class="title-nl">Huisregels</h2>
             <h2 class="title-en" lang="en">House Rules</h2>
-            
             <div class="info-card">
-                <p class="section-desc-nl" style="text-decoration: underline; font-weight: 700; margin-bottom: 25px;">Respect en communicatie is een belangrijke regel bij Perforé</p>
-                <p class="section-desc-en" lang="en" style="text-decoration: underline; font-weight: 700; margin-bottom: 25px; display:none;">Respect and communication is an important rule at Perforé</p>
-                
+                <p class="section-desc-nl">Respect en communicatie is een belangrijke regel bij Perforé</p>
+                <p class="section-desc-en" lang="en">Respect and communication is an important rule at Perforé</p>
                 <div class="rules-grid rules-list-nl">
                     <div class="rule-text">Verwittig 24h op voorhand als je niet op de afspraak kan geraken. Tijd is kostbaar, zowel voor jou als voor mij, daarom zal er bij no-show zonder verwittiging kosten in rekening worden gebracht.</div>
                     <div class="rule-text">Ondervind je problemen met een piercing? Maak een afspraak en we bekijken dit samen.</div>
                     <div class="rule-text">Zelf een piercing meebrengen is jammer genoeg niet toegelaten. Alle piercings en materialen die in de studio worden gebruikt, zijn zorgvuldig samengesteld om de beste kwaliteit en strengste hygiëne te kunnen aanbieden aan de klant.</div>
                 </div>
-                
                 <div class="rules-grid rules-list-en" lang="en">
                     <div class="rule-text">Please notify us 24 hours in advance if you cannot make it to the appointment. Time is precious for both of us, so no-shows without notification will be charged.</div>
                     <div class="rule-text">Experiencing issues with a piercing? Book an appointment and we will look into it together.</div>
@@ -209,7 +172,7 @@
         </div>
     </section>
 
-    <!-- 5. PORTFOLIO SECTIE (Alleen sprekende foto's) -->
+    <!-- 5. PORTFOLIO SECTIE -->
     <section id="portfolio">
         <div class="container">
             <h2>Portfolio</h2>
@@ -227,18 +190,13 @@
         <div class="container">
             <h2 class="title-nl">Een afspraak maken</h2>
             <h2 class="title-en" lang="en">Make an appointment</h2>
-            
             <div class="content-nl" style="margin-bottom: 30px;">
                 <p>Dit kan van maandag tot en met vrijdag.<br>Zaterdag en zondag gesloten.</p>
             </div>
             <div class="content-en" lang="en" style="margin-bottom: 30px;">
                 <p>Available from Monday to Friday.<br>Closed on Saturday and Sunday.</p>
             </div>
-            
-            <!-- Grote strakke boekingsknop -->
             <a href="https://wa.me" target="_blank" class="btn main-btn">Boek hier!</a>
-            
-            <!-- Opvallende PS / * box voor de zaterdagen -->
             <br>
             <div class="ps-box content-nl">
                 <strong>* Tip:</strong> Hou zeker de socials in de gaten, uitzonderlijk zullen er boekingen open gezet worden op zaterdagen.
@@ -249,7 +207,7 @@
         </div>
     </section>
 
-    <!-- 7. VOLLEDIG RODE FOOTER (Visitekaartje look) -->
+    <!-- 7. FOOTER SECTIE -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -257,29 +215,24 @@
                 <h4 class="f-title-1-en" lang="en">Where to find me</h4>
                 <p style="margin-top: 15px;">Kalkenstraat 83<br>9255 Buggenhout</p>
             </div>
-            
             <div class="footer-column">
                 <h4 class="f-title-2-nl">Hoe kan je me bereiken</h4>
                 <h4 class="f-title-2-en" lang="en">How to reach me</h4>
                 <div style="margin-top: 15px;">
-                    <!-- Jouw WhatsApp Business Link direct achter het nummer -->
-                    <a href="https://wa.me" target="_blank" class="footer-wa-link" style="display: inline-flex; align-items: center; gap: 8px;">
-                        <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> +32 492 68 62 30
+                    <a href="https://wa.me" target="_blank" class="footer-wa-link">
+                        <i class="fab fa-whatsapp"></i> +32 492 68 62 30
                     </a>
                 </div>
             </div>
-            
             <div class="footer-column">
                 <h4 class="f-title-3-nl">Volg PERFORÉ</h4>
                 <h4 class="f-title-3-en" lang="en">Follow PERFORÉ</h4>
                 <div class="footer-socials">
-                    <!-- Gecorrigeerde iconen: Witte bollen met een strakke rode F en Insta-camera -->
-                    <a href="https://facebook.com" target="_blank" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" class="footer-social-btn" style="background-color: #f8ecec; color: #d32f2f;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="footer-social-btn" style="background-color: #f8ecec; color: #d32f2f;"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-        
         <div class="footer-quote footer-quote-nl">
             ~ Piercings zijn al lang niet meer rebels, het is de ultieme vorm van zelfexpressie en esthetiek geworden. Het mooiste moment is wanneer iemand in de spiegel kijkt en zich door dat ene sieraad zelfzekerder voelt ~
         </div>
@@ -291,42 +244,32 @@
     <!-- SLIM TAALSYSTEEM SCRIPT -->
     <script>
         let currentLang = 'nl';
-
         function toggleLanguage() {
             const btn = document.querySelector('.lang-btn');
-            
             if (currentLang === 'nl') {
-                currentLang = 'en';
-                btn.innerText = 'NL';
-                
+                currentLang = 'en'; btn.innerText = 'NL';
                 document.querySelector('.nav-home').innerText = 'Home';
                 document.querySelector('.nav-piercings').innerText = 'Prices';
                 document.querySelector('.nav-jewelry').innerText = 'Shop';
                 document.querySelector('.nav-rules').innerText = 'Rules';
                 document.querySelector('.nav-portfolio').innerText = 'Portfolio';
                 document.querySelector('.nav-contact').innerText = 'Booking';
-                
                 document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'block');
                 document.querySelectorAll('.slogan-nl, .content-nl, .title-nl, .section-desc-nl, .rules-box-nl, .rules-list-nl, .f-title-1-nl, .f-title-2-nl, .f-title-3-nl, .footer-quote-nl').forEach(el => el.style.display = 'none');
                 document.querySelectorAll('.section-desc-en').forEach(el => el.style.display = 'block');
-                
                 document.querySelector('.main-btn').innerText = 'Book here!';
                 document.querySelectorAll('.order-btn').forEach(el => el.innerText = 'Order via WhatsApp');
             } else {
-                currentLang = 'nl';
-                btn.innerText = 'EN';
-                
+                currentLang = 'nl'; btn.innerText = 'EN';
                 document.querySelector('.nav-home').innerText = 'Home';
                 document.querySelector('.nav-piercings').innerText = 'Diensten & Prijzen';
                 document.querySelector('.nav-jewelry').innerText = 'Shop';
                 document.querySelector('.nav-rules').innerText = 'Huisregels';
                 document.querySelector('.nav-portfolio').innerText = 'Portfolio';
                 document.querySelector('.nav-contact').innerText = 'Afspraak';
-                
                 document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'none');
                 document.querySelectorAll('.slogan-nl, .content-nl, .title-nl, .section-desc-nl, .rules-box-nl, .rules-list-nl, .f-title-1-nl, .f-title-2-nl, .f-title-3-nl, .footer-quote-nl').forEach(el => el.style.display = 'block');
                 document.querySelectorAll('.section-desc-en').forEach(el => el.style.display = 'none');
-                
                 document.querySelector('.main-btn').innerText = 'Boek hier!';
                 document.querySelectorAll('.order-btn').forEach(el => el.innerText = 'Bestel via WhatsApp');
             }
