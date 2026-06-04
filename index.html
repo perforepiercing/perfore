@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERFORÉ</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { background-color: #f8ecec; color: #d32f2f; font-family: 'Lato', sans-serif; line-height: 1.6; padding-top: 130px; }
+        h1, h2, h3, h4 { font-family: 'Cinzel Decorative', Georgia, serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+        
+        /* HERSTELD: De balk is nu compact en blokkeert de kliks op de rest van de pagina niet meer */
+        header { position: fixed; top: 0; left: 0; width: 100%; background-color: #d32f2f; z-index: 1000; padding: 15px 5%; display: flex; justify-content: center; align-items: center; height: auto; }
+        nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; width: 100%; max-width: 1100px; pointer-events: auto; }
+        nav a { color: #f8ecec; text-decoration: none; margin: 5px 12px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px; }
+        
+        .lang-btn { background-color: transparent; border: 1px solid #f8ecec; color: #f8ecec; padding: 3px 8px; margin-left: 10px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.8rem; }
+        
+        section { padding: 80px 5%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(211, 47, 47, 0.15); position: relative; z-index: 1; }
+        #home { padding-top: 40px; }
+        
+        .about-container { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; width: 100%; gap: 40px; text-align: left; }
+        .about-text { flex: 1; }
+        .about-text h1 { font-size: 3.2rem; margin-bottom: 5px; letter-spacing: 4px; color: #d32f2f; }
+        .about-text h3 { font-family: 'Lato', sans-serif; font-size: 1.4rem; font-weight: 300; text-transform: none; margin-bottom: 25px; }
+        .about-text p { font-size: 1.2rem; margin-bottom: 15px; text-align: justify; }
+        
+        .about-image-wrapper { flex: 0 0 350px; }
+        .about-image-placeholder { width: 100%; height: 450px; background-color: rgba(211, 47, 47, 0.05); border: 3px solid #d32f2f; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .about-image-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        section h2 { font-size: 2.3rem; margin-bottom: 35px; position: relative; padding-bottom: 15px; text-align: center; width: 100%; letter-spacing: 2px; }
+        section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background-color: #d32f2f; }
+        .container { max-width: 1100px; width: 100%; }
+        .section-desc { font-size: 1.2rem; max-width: 850px; margin: 0 auto 25px auto; font-weight: 300; }
+        
+        .price-list { margin: 20px auto 0 auto; text-align: left; max-width: 650px; }
+        .price-item { display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(211, 47, 47, 0.25); padding: 12px 0; font-size: 1.2rem; }
+        .price-item span:first-child { font-weight: 700; }
+        
+        .rules-box { border: 1px solid #d32f2f; padding: 20px; margin-top: 35px; max-width: 650px; margin-left: auto; margin-right: auto; background-color: rgba(211, 47, 47, 0.02); }
+        .rules-box p { font-size: 1.1rem; margin-bottom: 8px; }
+        .rules-box p:last-child { margin-bottom: 0; }
+        
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 30px; width: 100%; }
+        .product-card { background: rgba(211, 47, 47, 0.02); border: 1px solid rgba(211, 47, 47, 0.15); padding: 15px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+        .product-img-placeholder { width: 100%; height: 150px; background-color: rgba(211, 47, 47, 0.06); margin-bottom: 12px; display: flex; justify-content: center; align-items: center; font-style: italic; font-size: 0.9rem; }
+        .product-card h3 { font-size: 1.05rem; margin-bottom: 6px; font-family: 'Lato', sans-serif; font-weight: 700; text-transform: none; }
+        .price { font-weight: 700; margin-bottom: 12px; font-size: 1.05rem; }
+        
+        .info-card { max-width: 800px; border: 1px solid #d32f2f; background-color: rgba(211, 47, 47, 0.02); padding: 35px; margin: 25px auto 0 auto; }
+        .info-card p { font-size: 1.2rem; margin-bottom: 25px; font-weight: 700; text-decoration: underline; }
+        .rules-grid { display: flex; flex-direction: column; gap: 20px; }
+        .rule-text { font-size: 1.1rem; border-top: 1px dashed rgba(211, 47, 47, 0.2); padding-top: 12px; }
+        .rule-text:first-of-type { border-top: none; padding-top: 0; }
+        
+        .btn { display: inline-block; background-color: #d32f2f; color: #f8ecec; padding: 14px 40px; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; cursor: pointer; font-size: 1rem; position: relative; z-index: 10; pointer-events: auto; border: none; }
+        .btn-sm { padding: 8px 10px; font-size: 0.75rem; width: 100%; }
+        .ps-box { margin-top: 30px; font-size: 1.05rem; font-style: italic; font-weight: 300; background-color: rgba(211, 47, 47, 0.05); padding: 12px 20px; border-left: 3px solid #d32f2f; display: inline-block; text-align: left; max-width: 600px; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: 100%; margin-top: 20px; }
+        .gallery-item { width: 100%; height: 240px; background-color: rgba(211, 47, 47, 0.06); display: flex; justify-content: center; align-items: center; font-style: italic; border: 1px solid rgba(211, 47, 47, 0.1); }
+        
+        footer { background-color: #d32f2f; color: #f8ecec; padding: 50px 5% 35px 5%; text-align: center; position: relative; z-index: 5; }
+        .footer-container { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 0 auto; gap: 30px; }
+        .footer-column h4 { font-size: 1.15rem; margin-bottom: 12px; color: #f8ecec; }
+        .footer-column p, .footer-column a { font-size: 1.1rem; color: #f8ecec; text-decoration: none; }
+        .footer-wa-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 400; }
+        
+        .footer-socials { display: flex; justify-content: center; gap: 15px; margin-top: 12px; }
+        .footer-social-btn { color: #d32f2f !important; background-color: #f8ecec !important; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; text-decoration: none; }
+        .footer-quote { max-width: 900px; margin: 40px auto 0 auto; font-size: 1.05rem; font-style: italic; font-weight: 300; border-top: 1px solid rgba(248, 236, 236, 0.2); padding-top: 20px; color: #f8ecec; }
+        
+        [lang="en"] { display: none; }
+        
+        @media (max-width: 992px) { .grid, .gallery { grid-template-columns: repeat(2, 1fr); } .about-container { flex-direction: column; text-align: center; } .about-text h1, .about-text h3, .about-text p { text-align: center; } .about-image-wrapper { width: 100%; max-width: 300px; margin: 0 auto; } .footer-container { grid-template-columns: 1fr; gap: 25px; } }
+        @media (max-width: 768px) { header { padding: 12px 2%; } nav a { margin: 4px 6px; font-size: 0.75rem; } .grid, .gallery { grid-template-columns: 1fr; } body { padding-top: 150px; } #home h1 { font-size: 2.8rem; } section h2 { font-size: 1.8rem; } .info-card { padding: 20px 10px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="nav-home">Home</a>
+            <a href="#diensten" class="nav-piercings">Diensten & Prijzen</a>
+            <a href="#juwelen" class="nav-jewelry">Shop</a>
+            <a href="#regels" class="nav-rules">Huisregels</a>
+            <a href="#portfolio" class="nav-portfolio">Portfolio</a>
+            <a href="#contact" class="nav-contact">Afspraak</a>
+            <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
 
+    <section id="home">
+        <div class="about-container">
+            <div class="about-text">
+                <h1>PERFORÉ</h1>
+                <div class="content-nl">
+                    <h3>Laten we beginnen met mezelf voor te stellen</h3>
+                    <p>Ik ben Naomi, het gezicht en de gecertificeerde piercer achter deze studio. Met veel passie, oog voor detail en uiterste precisie zorg ik ervoor dat jij met een glimlach en een prachtig resultaat de studio verlaat.</p>
+                    <p>Hygiëne en comfort staan bij mij altijd op de allereerste plaats. Of het nu je allereerste piercing is of een unieke toevoeging; ik neem uitgebreid de tijd om je op je gemak te stellen in de studio.</p>
+                </div>
+                <div class="content-en" lang="en">
+                    <h3>Let's start by introducing myself</h3>
+                    <p>I am Naomi, the face and certified piercer behind this studio. With a lot of passion, eye for detail, and ultimate precision, I ensure that you leave the studio with a smile and a beautiful result.</p>
+    <!-- 2. DIENSTEN & PRIJZEN SECTIE -->
+    <section id="diensten">
+        <div class="container">
+            <h2 class="title-nl">Diensten & Prijzen</h2>
+            <h2 class="title-en" lang="en">Services & Prices</h2>
+            <div class="price-list">
+                <div class="price-item"><span>Oorlel (Lobe)</span><span>€25,00</span></div>
+                <div class="price-item"><span>Kraakbeen (Helix / Tragus)</span><span>€40,00</span></div>
+                <div class="price-item"><span>Neuspiercing (Nostril)</span><span>€45,00</span></div>
+                <div class="price-item"><span>Septum</span><span>€50,00</span></div>
+                <div class="price-item"><span>Navelpiercing</span><span>€55,00</span></div>
+                <div class="price-item"><span>Tepelpiercing</span><span>€60,00</span></div>
+            </div>
+            <div class="rules-box rules-box-nl">
+                <p>Personen onder 18 jaar dienen schriftelijke toestemming van de ouders mee te brengen.</p>
+                <p>Personen onder 16 jaar moeten een ouder bij zich hebben.</p>
+                <p>Er wordt maar gepierced vanaf 4 jaar.</p>
+            </div>
+            <div class="rules-box rules-box-en" lang="en">
+                <p>Persons under 18 must bring written parental consent.</p>
+                <p>Persons under 16 must be accompanied by a parent.</p>
+                <p>Piercings are only performed from 4 years of age and up.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SHOP SECTIE -->
+    <section id="juwelen">
+        <div class="container">
+            <h2 class="title-nl">Shop Online</h2>
+            <h2 class="title-en" lang="en">Shop Online</h2>
+            <p class="section-desc section-desc-nl">Ontdek hoogwaardige, <strong>premium titanium juwelen</strong> voor jouw piercings. Bestel eenvoudig via WhatsApp en haal het gratis op in de studio (geen verzending).</p>
+            <p class="section-desc section-desc-en" lang="en">Discover high-quality, <strong>premium titanium jewelry</strong> for your piercings. Order easily via WhatsApp and pick it up for free at the studio (no shipping).</p>
+            <div class="grid">
+                <div class="product-card"><div class="product-img-placeholder">Juweel 1</div><h3>Titanium Clicker</h3><div class="price">€25,00</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 2</div><h3>Kristal Stud</h3><div class="price">€19,50</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 3</div><h3>Opaal Topje</h3><div class="price">€22,00</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 4</div><h3>Gouden Labret</h3><div class="price">€29,50</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 5</div><h3>Classic Barbell</h3><div class="price">€15,00</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 6</div><h3>Zirconia Ring</h3><div class="price">€24,00</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 7</div><h3>Shield Clicker</h3><div class="price">€32,50</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+                <div class="product-card"><div class="product-img-placeholder">Juweel 8</div><h3>Nazorg Spray</h3><div class="price">€9,95</div><a href="https://wa.me" target="_blank" class="btn btn-sm order-btn">Bestel via WhatsApp</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. HUISREGELS SECTIE -->
+    <section id="regels">
+        <div class="container">
+            <h2 class="title-nl">Huisregels</h2>
+            <h2 class="title-en" lang="en">House Rules</h2>
+            <div class="info-card">
+                <p class="section-desc-nl">Respect en communicatie is een belangrijke regel bij Perforé</p>
+                <p class="section-desc-en" lang="en">Respect and communication is an important rule at Perforé</p>
+                <div class="rules-grid rules-list-nl">
+                    <div class="rule-text">Verwittig 24h op voorhand als je niet op de afspraak kan geraken. Tijd is kostbaar, zowel voor jou als voor mij, daarom zal er bij no-show zonder verwittiging kosten in rekening worden gebracht.</div>
+                    <div class="rule-text">Ondervind je problemen met een piercing? Maak een afspraak en we bekijken dit samen.</div>
+                    <div class="rule-text">Zelf een piercing meebrengen is jammer genoeg niet toegelaten. Alle piercings en materialen die in de studio worden gebruikt, zijn zorgvuldig samengesteld om de beste kwaliteit en strengste hygiëne te kunnen aanbieden aan de klant.</div>
+                </div>
+                <div class="rules-grid rules-list-en" lang="en">
+                    <div class="rule-text">Please notify us 24 hours in advance if you cannot make it to the appointment. Time is precious for both of us, so no-shows without notification will be charged.</div>
+                    <div class="rule-text">Experiencing issues with a piercing? Book an appointment and we will look into it together.</div>
+                    <div class="rule-text">Bringing your own piercing jewelry is unfortunately not allowed. All piercings and materials used in the studio are carefully selected to provide the best quality and strictest hygiene to the client.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PORTFOLIO SECTIE -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <div class="gallery">
+                <div class="gallery-item">Foto 1</div>
+                <div class="gallery-item">Foto 2</div>
+                <div class="gallery-item">Foto 3</div>
+                <div class="gallery-item">Foto 4</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. AFSPRAAK SECTIE -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="title-nl">Een afspraak maken</h2>
+            <h2 class="title-en" lang="en">Make an appointment</h2>
+            <div class="content-nl" style="margin-bottom: 30px;">
+                <p>Dit kan van maandag tot en met vrijdag.<br>Zaterdag en zondag gesloten.</p>
+            </div>
+            <div class="content-en" lang="en" style="margin-bottom: 30px;">
+                <p>Available from Monday to Friday.<br>Closed on Saturday and Sunday.</p>
+            </div>
+            <a href="https://wa.me" target="_blank" class="btn main-btn">Boek hier!</a>
+            <br>
+            <div class="ps-box content-nl">
+                <strong>* Tip:</strong> Hou zeker de socials in de gaten, uitzonderlijk zullen er boekingen open gezet worden op zaterdagen.
+            </div>
+            <div class="ps-box content-en" lang="en">
+                <strong>* Tip:</strong> Be sure to keep an eye on social media, bookings may exceptionally open on Saturdays.
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER SECTIE -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="f-title-1-nl">Waar kan je me vinden</h4>
+                <h4 class="f-title-1-en" lang="en">Where to find me</h4>
+                <p style="margin-top: 15px;">Kalkenstraat 83<br>9255 Buggenhout</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="f-title-2-nl">Hoe kan je me bereiken</h4>
+                <h4 class="f-title-2-en" lang="en">How to reach me</h4>
+                <div style="margin-top: 15px;">
+                    <a href="https://wa.me" target="_blank" class="footer-wa-link">
+                        <i class="fab fa-whatsapp"></i> +32 492 68 62 30
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4 class="f-title-3-nl">Volg PERFORÉ</h4>
+                <h4 class="f-title-3-en" lang="en">Follow PERFORÉ</h4>
+                <div class="footer-socials">
+                    <a href="https://facebook.com" target="_blank" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-quote footer-quote-nl">
+            ~ Piercings zijn al lang niet meer rebels, het is de ultieme vorm van zelfexpressie en esthetiek geworden. Het mooiste moment is wanneer iemand in de spiegel kijkt en zich door dat ene sieraad zelfzekerder voelt ~
+        </div>
+        <div class="footer-quote footer-quote-en" lang="en">
+            ~ Piercings are no longer just rebellious; they have become the ultimate form of self-expression and aesthetics. The most beautiful moment is when someone looks in the mirror and feels more confident because of that single piece of jewelry ~
+        </div>
+    </footer>
+
+    <script>
+      
