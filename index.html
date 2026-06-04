@@ -13,7 +13,8 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { background-color: #f8ecec; color: #d32f2f; font-family: 'Lato', sans-serif; line-height: 1.6; padding-top: 70px; }
+        body { background-color: #f8ecec; color: #d32f2f; font-family: 'Lato', sans-serif; line-height: 1.6; padding-top: 90px; }
+        
         h1, h2, h3, h4 { font-family: 'Cinzel Decorative', Georgia, serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
         
         /* De compacte bovenbalk exact in de stijl en kleur van de footer */
@@ -25,16 +26,19 @@
         .lang-btn { background-color: transparent; border: 1px solid #f8ecec; color: #f8ecec; padding: 4px 10px; margin-left: 15px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.85rem; }
         .lang-btn:hover { background-color: #f8ecec; color: #d32f2f; }
 
-        section { padding: 100px 5%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(211, 47, 47, 0.15); }
-        #home { padding-top: 120px; }
+        /* HIER ZAT DE FOUT: min-height stond verkeerd ingesteld */
+        section { padding: 100px 5%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(211, 47, 47, 0.15); }
+        #home { padding-top: 140px; }
         .about-container { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; width: 100%; gap: 50px; text-align: left; }
         .about-text { flex: 1; }
         .about-text h1 { font-size: 2.8rem; margin-bottom: 10px; letter-spacing: 4px; color: #d32f2f; }
         .about-text h3 { font-family: 'Lato', sans-serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 1px; text-transform: none; margin-bottom: 25px; }
         .about-text p { font-size: 1.25rem; margin-bottom: 20px; text-align: justify; }
+        
+        /* Fotovak instellingen aangepast voor jouw echte foto */
         .about-image-wrapper { flex: 0 0 380px; }
-        .about-image-placeholder { width: 100%; height: 480px; background-color: rgba(211, 47, 47, 0.05); border: 3px solid #d32f2f; display: flex; justify-content: center; align-items: center; font-style: italic; }
-        .about-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .about-image-placeholder { width: 100%; height: 480px; background-color: rgba(211, 47, 47, 0.05); border: 3px solid #d32f2f; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .about-image-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         section h2 { font-size: 2.5rem; margin-bottom: 40px; position: relative; padding-bottom: 15px; text-align: center; width: 100%; letter-spacing: 3px; }
         section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background-color: #d32f2f; }
@@ -107,7 +111,7 @@
                 <div class="content-en" lang="en">
                     <h3>Let's start by introducing myself</h3>
                     <p>I am Naomi, the face and certified piercer behind this studio. With a lot of passion, eye for detail, and ultimate precision, I ensure that you leave the studio with a smile and a beautiful result.</p>
-                    <p>Hygiene and comfort are always my number one priority. Whether it is your very first piercing or a unique addition; I take plenty of time to make you feel completely at ease in the studio.</p>
+
     <section id="diensten">
         <div class="container">
             <h2 class="title-nl">Diensten & Prijzen</h2>
